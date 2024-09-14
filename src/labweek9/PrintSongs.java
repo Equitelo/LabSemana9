@@ -4,18 +4,33 @@
  */
 package labweek9;
 
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author user
  */
 public class PrintSongs extends javax.swing.JFrame {
 
-    JTunes h;
-    public PrintSongs(JTunes h) {
-        this.h=h;
+    JTunes instanciaMain;
+    DefaultListModel<String> modeloLista;
+    
+    public PrintSongs(JTunes instanciaMemoria) {
+        this.instanciaMain=instanciaMemoria;
+        this.modeloLista = new DefaultListModel<>();
         initComponents();
     }
-
+    
+    private void mostrarCanciones() {
+        // Recorremos las canciones registradas y las agregamos al modelo de la lista
+        for (Song song : instanciaMain.songs) {
+            if (song != null) {
+                modeloLista.addElement(song.getName());  // Agrega el nombre de la canción al modelo
+            }
+        }
+        listaDeCanciones.setModel(modeloLista);  // Asocia el modelo a la JList
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,18 +41,38 @@ public class PrintSongs extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaDeCanciones = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Todas las Canciones");
+
+        jScrollPane1.setViewportView(listaDeCanciones);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -55,6 +90,9 @@ public class PrintSongs extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> listaDeCanciones;
     // End of variables declaration//GEN-END:variables
 }

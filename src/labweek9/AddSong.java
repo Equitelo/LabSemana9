@@ -7,9 +7,9 @@ package labweek9;
 import javax.swing.JOptionPane;
 
 public class AddSong extends javax.swing.JFrame {
-    JTunes h;
-    public AddSong(JTunes h) {
-        this.h=h;
+    JTunes instanciaMain;
+    public AddSong(JTunes instanciaMemoria) {
+        this.instanciaMain=instanciaMemoria;
         initComponents();
     }
 
@@ -115,15 +115,17 @@ public class AddSong extends javax.swing.JFrame {
         try{
             codigo= Integer.parseInt(code);
             precio = Double.parseDouble(price);
-        }catch(Exception e){
+        }catch(NumberFormatException e){
             return;
         }
         if (!txtCode.getText().isEmpty() || txtName.getText().isEmpty() || txtPrice.getText().isEmpty()) {
-            h.addSong(codigo, code, precio);
+            instanciaMain.addSong(codigo, code, precio);
             JOptionPane.showMessageDialog(null, "Se agrego la cancion "+song+" correctamente");
         } else { 
             JOptionPane.showMessageDialog(null, "No ha llenado todas las casillas.");
         }
+        new SwingTunes(instanciaMain).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

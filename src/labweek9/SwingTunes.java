@@ -110,23 +110,24 @@ public class SwingTunes extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         new AddSong(h).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         new SearchSong(h).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         new PrintSongs(h).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnPrintActionPerformed
 
     private void btnRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRateActionPerformed
         new RateSongs(h).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRateActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

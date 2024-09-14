@@ -24,7 +24,6 @@ public class JTunes {
             for (Song sng: songs) {
                 if (sng == null) {
                     sng = new Song(code, name, price);
-                    JOptionPane.showMessageDialog(null, "Cancion agregada"+sng.getName());
                     return true;
                 } 
             }
@@ -40,17 +39,36 @@ public class JTunes {
             song.addStars(stars);
             JOptionPane.showMessageDialog(null, "La cancion fue actualizada. ");
             song.print();
-        } else {
-            JOptionPane.showMessageDialog(null, "No existe dicha cancion");
+        } 
+    }
+    
+    public void imprimirCanciones(){
+        for (int i = 0; i < songs.length; i++) {
+            songs[i].print();
+            if(songs[i]==null){
+                break;
+            }
         }
     }
     
-    public void printSongs() {
-        System.out.println("Lista de canciones:");
-        for (Song sng : songs) {
-            if (sng != null) {
-                sng.print(); 
+    public String [] busquedaLista(String busqueda){
+        int cantidad = 0;
+        for (int i = 0; i < songs.length; i++) {
+            if(songs[i]!=null && songs[i].getName().toLowerCase().contains(busqueda.toLowerCase())){
+                cantidad++;
             }
         }
+        if (cantidad==0) {
+            return null;
+        }
+        String[] nombres = new String[cantidad];
+        cantidad = 0;
+        for (int i = 0; i < songs.length; i++) {
+            if(songs[i]!=null && songs[i].getName().toLowerCase().contains(busqueda.toLowerCase())){
+                nombres[cantidad] = songs[i].getName();
+                cantidad++;
+            }
+        }
+        return nombres;
     }
 }
