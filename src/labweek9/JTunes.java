@@ -34,11 +34,15 @@ public class JTunes {
     }
     
     public void rateSong(int stars, int code){
+        if (stars < 1 || stars > 5) {
+            JOptionPane.showMessageDialog(null, "Ingrese una calificación entre 1 y 5 estrellas.");
+            return;
+        }
         Song song = searchSong(code);
-        if (song!=null) {
+
+        if (song != null) {
             song.addStars(stars);
-            JOptionPane.showMessageDialog(null, "La cancion fue actualizada. ");
-            song.print();
+            JOptionPane.showMessageDialog(null, "La canción fue actualizada. Rating actual: " + song.songRating());
         } 
     }
     
