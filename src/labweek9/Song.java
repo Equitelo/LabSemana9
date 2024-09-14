@@ -15,6 +15,10 @@ public class Song {
     private double sumaEstrellas;
     private int cantReviews;
     
+    public Song(){
+    
+    }
+    
     public Song(int codigo, String nombre, double precio){
         this.codigo=codigo;
         this.nombre=nombre;

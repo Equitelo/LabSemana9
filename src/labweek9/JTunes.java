@@ -6,8 +6,12 @@ public class JTunes {
     
     Song songs[];
     
+    public JTunes(int tamanio){
+        this.songs=new Song[tamanio];
+    }
+    
     public JTunes(){
-        this.songs=new Song[20];
+    
     }
     
     public Song searchSong(int code){
